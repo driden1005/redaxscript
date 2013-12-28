@@ -12,18 +12,8 @@
 
 class Redaxscript_Helper
 {
-	/**
-	 * construct
-	 *
-	 * @since 2.1.0
-	 */
-
-	public function __construct()
-	{
-		
-	}
 	
-	public function getSubset()
+	public static function getSubset()
 	{
 		if (LANGUAGE == 'bg' || LANGUAGE == 'ru')
 		{
@@ -40,18 +30,18 @@ class Redaxscript_Helper
 		return $output;
 	}
 	
-	public function getClass()
+	public static function getClass()
 	{
 		$classes = array();
-		$classes[] = $this->_getBrowserClass();
-		$classes[] = $this->_getDeviceClass();
-		$classes[] = $this->_getLanguageClass();
-		$classes[] = $this->_getContentTypeClass();
+		$classes[] = self::_getBrowserClass();
+		$classes[] = self::_getDeviceClass();
+		$classes[] = self::_getLanguageClass();
+		$classes[] = self::_getContentTypeClass();
 		$output = implode(' ', array_filter($classes));
 		return $output;
 	}
 
-	protected function _getBrowserClass()
+	protected static function _getBrowserClass()
 	{
 		$output = MY_BROWSER . MY_BROWSER_VERSION;
 		if (MY_ENGINE)
@@ -65,7 +55,7 @@ class Redaxscript_Helper
 		return $output;
 	}
 
-	protected function _getDeviceClass()
+	protected static function _getDeviceClass()
 	{
 		if (MY_MOBILE)
 		{
@@ -90,7 +80,7 @@ class Redaxscript_Helper
 		return $output;
 	}
 	
-	protected function _getLanguageClass()
+	protected static function _getLanguageClass()
 	{
 		if (LANGUAGE == 'ar' || LANGUAGE == 'fa' || LANGUAGE == 'he')
 		{
@@ -99,7 +89,7 @@ class Redaxscript_Helper
 		return $output;
 	}
 	
-	protected function _getContentTypeClass()
+	protected static function _getContentTypeClass()
 	{
 		if (CATEGORY)
 		{
@@ -127,8 +117,7 @@ class Redaxscript_Helper
 
 function helper_class()
 {
-	$helper = new Redaxscript_Helper();
-	echo $helper->getClass();
+	echo Redaxscript_Helper::getClass();
 }
 
 /**
@@ -144,7 +133,6 @@ function helper_class()
 
 function helper_subset()
 {
-	$helper = new Redaxscript_Helper();
-	echo $helper->getSubset();
+	echo Redaxscript_Helper::getSubset();
 }
 ?>
