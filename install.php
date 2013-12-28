@@ -8,7 +8,6 @@ include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
-include_once('includes/helper.php');
 include_once('includes/loader.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
