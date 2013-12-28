@@ -12,7 +12,12 @@
 
 class Redaxscript_Helper
 {
-	
+	/**
+	 * get subset
+	 *
+	 * @since 2.1.0
+	 */
+
 	public static function getSubset()
 	{
 		if (LANGUAGE == 'bg' || LANGUAGE == 'ru')
@@ -29,7 +34,13 @@ class Redaxscript_Helper
 		}
 		return $output;
 	}
-	
+
+	/**
+	 * get class
+	 *
+	 * @since 2.1.0
+	 */
+
 	public static function getClass()
 	{
 		$classes = array();
@@ -40,6 +51,12 @@ class Redaxscript_Helper
 		$output = implode(' ', array_filter($classes));
 		return $output;
 	}
+
+	/**
+	 * get browser class
+	 *
+	 * @since 2.1.0
+	 */
 
 	protected static function _getBrowserClass()
 	{
@@ -54,6 +71,12 @@ class Redaxscript_Helper
 		}
 		return $output;
 	}
+
+	/**
+	 * get device class
+	 *
+	 * @since 2.1.0
+	 */
 
 	protected static function _getDeviceClass()
 	{
@@ -79,7 +102,13 @@ class Redaxscript_Helper
 		}
 		return $output;
 	}
-	
+
+	/**
+	 * get language class
+	 *
+	 * @since 2.1.0
+	 */
+
 	protected static function _getLanguageClass()
 	{
 		if (LANGUAGE == 'ar' || LANGUAGE == 'fa' || LANGUAGE == 'he')
@@ -88,7 +117,13 @@ class Redaxscript_Helper
 		}
 		return $output;
 	}
-	
+
+	/**
+	 * get content type class
+	 *
+	 * @since 2.1.0
+	 */
+
 	protected static function _getContentTypeClass()
 	{
 		if (CATEGORY)
@@ -101,14 +136,13 @@ class Redaxscript_Helper
 		}
 		return $output;
 	}
-	
 }
 
 /**
  * helper class
  *
  * @since 2.0.0
- * @deprecated 2.0.0
+ * @deprecated 2.1.0
  *
  * @package Redaxscript
  * @category Helper
