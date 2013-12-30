@@ -21,6 +21,7 @@ include_once('includes/query.php');
 include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
+include_once('migrates/all.php');
 
 /* startup redaxscript */
 
