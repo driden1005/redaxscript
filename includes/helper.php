@@ -53,11 +53,12 @@ class Redaxscript_Helper
 	{
 		/* collect all classes */
 
-		$classes = array();
-		$classes[] = self::_getBrowserClass();
-		$classes[] = self::_getDeviceClass();
-		$classes[] = self::_getLanguageClass();
-		$classes[] = self::_getContentTypeClass();
+		$classes = array_merge(
+				self::_getBrowserClass(),
+				self::_getDeviceClass(),
+				self::_getLanguageClass(),
+				self::_getContentTypeClass()
+			);
 
 		/* glue all classes */
 
@@ -73,19 +74,18 @@ class Redaxscript_Helper
 
 	protected static function _getBrowserClass()
 	{
+		$output = array();
+
 		/* browser name and version */
 
-		$output = MY_BROWSER . MY_BROWSER_VERSION;
+		$output[] = MY_BROWSER . MY_BROWSER_VERSION;
 
 		/* engine name */
 
 		if (MY_ENGINE)
 		{
-			if ($output)
-			{
-				$output .= ' ';
-			}
-			$output .= MY_ENGINE;
+			
+			$output[] = MY_ENGINE;
 		}
 		return $output;
 	}
@@ -98,14 +98,16 @@ class Redaxscript_Helper
 
 	protected static function _getDeviceClass()
 	{
+		$output = array();
+
 		/* mobile device */
 
 		if (MY_MOBILE)
 		{
-			$output = 'mobile';
+			$output[] = 'mobile';
 			if (MY_MOBILE != 'mobile')
 			{
-				$output .= ' ' . MY_MOBILE;
+				$output[] = MY_MOBILE;
 			}
 		}
 
@@ -113,10 +115,10 @@ class Redaxscript_Helper
 
 		else if (MY_TABLET)
 		{
-			$output = 'tablet';
+			$output[] = 'tablet';
 			if (MY_TABLET != 'tablet')
 			{
-				$output .= ' ' . MY_TABLET;
+				$output[] = MY_TABLET;
 			}
 		}
 
@@ -124,7 +126,8 @@ class Redaxscript_Helper
 
 		else if (MY_DESKTOP)
 		{
-			$output = 'desktop ' . MY_DESKTOP;
+			$output[] = 'desktop';
+			$output[] = MY_DESKTOP;
 		}
 		return $output;
 	}
@@ -137,11 +140,13 @@ class Redaxscript_Helper
 
 	protected static function _getLanguageClass()
 	{
+		$output = array();
+
 		/* right-to-left */
 
 		if (LANGUAGE == 'ar' || LANGUAGE == 'fa' || LANGUAGE == 'he')
 		{
-			$output .= 'rtl';
+			$output[] = 'rtl';
 		}
 		return $output;
 	}
@@ -154,18 +159,20 @@ class Redaxscript_Helper
 
 	protected static function _getContentTypeClass()
 	{
+		$output = array();
+
 		/* category */
 
 		if (CATEGORY)
 		{
-			$output = 'category';
+			$output[] = 'category';
 		}
 
 		/* article */
 
 		else if (ARTICLE)
 		{
-			$output = 'article';
+			$output[] = 'article';
 		}
 		return $output;
 	}
