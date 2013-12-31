@@ -84,7 +84,6 @@ class Redaxscript_Helper
 
 		if (MY_ENGINE)
 		{
-			
 			$output[] = MY_ENGINE;
 		}
 		return $output;
@@ -142,11 +141,18 @@ class Redaxscript_Helper
 	{
 		$output = array();
 
-		/* right-to-left */
+		/* rtl direction */
 
 		if (LANGUAGE == 'ar' || LANGUAGE == 'fa' || LANGUAGE == 'he')
 		{
 			$output[] = 'rtl';
+		}
+
+		/* ltr direction */
+
+		else
+		{
+			$output[] = 'ltr';
 		}
 		return $output;
 	}
