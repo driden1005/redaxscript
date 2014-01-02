@@ -13,6 +13,27 @@
 class Redaxscript_Helper
 {
 	/**
+	 * subset cyrillic
+	 * @var array
+	 */
+
+	private static $_subsetCyrillic = array('bg', 'ru');
+
+	/**
+	 * subset vietnamese
+	 * @var array
+	 */
+
+	private static $_subsetVietnamese = array('vi');
+
+	/**
+	 * rtl direction
+	 * @var array
+	 */
+
+	private static $_rtlDirection = array('ar', 'fa', 'he');
+
+	/**
 	 * get subset
 	 *
 	 * @since 2.1.0
@@ -22,14 +43,14 @@ class Redaxscript_Helper
 	{
 		/* cyrillic subset */
 
-		if (LANGUAGE == 'bg' || LANGUAGE == 'ru')
+		if (in_array(LANGUAGE, $_subsetCyrillic))
 		{
 			$output = 'cyrillic';
 		}
 
 		/* vietnamese subset */
 
-		else if (LANGUAGE == 'vi')
+		else if (in_array(LANGUAGE, $_subsetVietnamese))
 		{
 			$output = 'vietnamese';
 		}
@@ -56,7 +77,7 @@ class Redaxscript_Helper
 		$classes = array_merge(
 				self::_getBrowserClass(),
 				self::_getDeviceClass(),
-				self::_getLanguageClass(),
+				self::_getDirectionClass(),
 				self::_getContentTypeClass()
 			);
 
@@ -137,13 +158,13 @@ class Redaxscript_Helper
 	 * @since 2.1.0
 	 */
 
-	protected static function _getLanguageClass()
+	protected static function _getDirectionClass()
 	{
 		$output = array();
 
 		/* rtl direction */
 
-		if (LANGUAGE == 'ar' || LANGUAGE == 'fa' || LANGUAGE == 'he')
+		if (in_array(LANGUAGE, $_rtlDirection))
 		{
 			$output[] = 'rtl';
 		}
